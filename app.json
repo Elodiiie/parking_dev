@@ -1,0 +1,19 @@
+{
+  "pages":[
+    "pages/profile/profile",
+    "pages/login/login",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/car/car"
+
+
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#126ba8",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

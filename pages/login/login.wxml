@@ -1,0 +1,14 @@
+<!--pages/login/login.wxml-->
+
+<view class="view-contain-ti" >
+    <text class="text-ti">账号</text>
+    <input class="input1" value="{{username}}" bindinput="usernameInput"></input>
+</view>
+<view class="view-contain-ti">
+    <text class="text-ti">密码</text>
+    <input class="input1" password value="{{password}}" bindinput="passwordInput"></input>
+</view>
+<view class="viewName" style="background-color:#edf5fa;width: 70%;margin-left: 15%;">
+  <button class="loginBtn"  open-type="getUserProfile" bindtap="login" >登录</button>
+  <button class="resetBtn" bindtap="resetBtnClick">清除</button>
+</view>

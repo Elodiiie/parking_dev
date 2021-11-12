@@ -1,0 +1,39 @@
+/* pages/login/login.wxss */
+button{
+    margin-top: 40rpx;
+    width: 100%;
+    background-color: #126ba8;
+    color: floralwhite;
+}
+
+.view-contain-ti {
+    display: flex;
+    height: 40px;
+    margin: 20px;
+    border: 3rpx solid #2521ec;
+    border-radius: 10rpx;
+  }
+  
+  .text-ti {
+    position: absolute;
+    font-size: 12px;
+    background: white;
+    margin: -10px 0 0 10px;
+    padding: 0 5px;
+    color: rgb(144, 147, 167);
+  }
+  
+  .input1 {
+    margin:  auto 10px;
+  }
+
+.page-section .weui-cells weui-cells_after-title{
+    background-color: var(--themecolor);
+}
+.page-section .weui-cells weui-cells_after-title .weui-cell weui-cell_input{
+    height: 90rpx;
+    padding: 10rpx;
+    background-color: var(--themecolor);
+    display: flex;
+    
+}
