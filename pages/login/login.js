@@ -54,7 +54,7 @@ Page({
           })
           wx.showToast({
             title: '账号或密码错误',
-            icon: 'none',
+            icon: 'error',
             duration: 1500,
             success: function () {
              //弹窗后执行，可以省略

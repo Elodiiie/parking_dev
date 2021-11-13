@@ -2,7 +2,7 @@ page {
     background-color: #edece8;
   }
   .user_info_wrap {
-    height: 45vh;
+    height: 35vh;
     background-color: var(--themecolor);
     overflow: hidden;
   }

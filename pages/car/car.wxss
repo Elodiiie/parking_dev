@@ -1,1 +1,110 @@
 /* pages/car/car.wxss */
+.head{
+    background-color: var(--themecolor);
+    height: 400rpx;
+}
+.head .blank{
+    height: 200rpx;
+    color: floralwhite;
+    text-align: right;
+    margin-right: 30rpx;
+}
+.head .blank .arrow{
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid rgb(247, 240, 240);
+    border-right: 2px solid rgb(247, 240, 240);
+    position: absolute;
+    left: 20rpx;
+    transform: rotate(225deg);
+    margin-top:15rpx;
+}
+.head .showname{
+    margin-left: 30rpx;
+    font-size: 54rpx;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style:initial;
+    color: floralwhite;
+}
+.head .showCarNum{
+    padding-top: 60rpx;
+    margin-left: 30rpx;
+    height: 100rpx;
+    font-size: 34rpx;
+    color: floralwhite;
+    display: flex;
+}
+.head .deleteTip{
+  position: absolute;
+  right: 20rpx;
+  top: 350rpx;
+  height: 100rpx;
+  font-size: 28rpx;
+  color: floralwhite;
+  display: flex;
+  text-align: right;
+}
+.white{
+  background-color: #E6F3F9;
+  height: 3rpx;
+}
+.table {
+    border: 0px solid darkgray;
+  }
+  .tr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 3rem;
+    align-items: center;
+  }
+  .td {
+      width:40%;
+      justify-content: center;
+      text-align: center;
+  }
+  .td_arrow{
+    width:10%;
+    justify-content: center;
+    text-align: center;
+  }
+  .td_arrow .arrow{
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid var(--themecolor);
+    border-right: 1px solid var(--themecolor);
+    position: absolute;
+    right: 20rpx;
+    transform: rotate(45deg);
+    padding-bottom: 5rpx;
+    margin-top: -10rpx;
+}
+  .bg-w{
+    background: snow;
+  }
+  .bg-g{
+    background: #E6F3F9;
+  }
+  .th {
+    width: 40%;
+    justify-content: center;
+    background: var(--themecolor);
+    color: #fff;
+    display: flex;
+    height: 3rem;
+    align-items: center;
+  }  
+  .th_arrow{
+    width: 10%;
+    justify-content: center;
+    background: var(--themecolor);
+    color: #fff;
+    display: flex;
+    height: 3rem;
+    align-items: center;
+  }
+  .addCar{
+    text-align:center;
+    margin-top: 30rpx;
+    color: var(--themecolor);
+  }

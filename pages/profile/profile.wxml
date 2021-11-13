@@ -20,7 +20,7 @@
 <view class="user_content">
     <view class="user_main">
         <view class="history_wrap">
-            <navigator  url="/pages/car/car">
+            <navigator  url="/pages/car/car?carNum={{carNum}}&userid={{info.userid}}">
                 <view class="his_num">{{carNum}}</view>
                 <view class="his_name">车辆数</view>
             </navigator>
@@ -38,27 +38,27 @@
             </navigator>
         </view>
         <view class="orders_wrap">
-            <view class="orders_title">我的订单</view>
+            <view class="orders_title">个人信息--{{userinfo.nickName}}</view>
             <view class="orders_content">
 
                 <navigator url="/pages/order/index?type=1">
-                    <view class="iconfont icon-ding_dan"></view>
-                    <view class="order_name">全部订单</view>
+                    <view class="iconfont icon-gerenxinxi"></view>
+                    <view class="order_name">修改信息</view>
                 </navigator>
 
                 <navigator url="/pages/order/index?type=2">
-                    <view class="iconfont icon-fukuantongzhi"></view>
-                    <view class="order_name">待付款</view>
+                    <view class="iconfont icon-tingchechang"></view>
+                    <view class="order_name">场内车辆</view>
                 </navigator>
 
-                <navigator url="/pages/order/index?type=3">
-                    <view class="iconfont icon-receipt-address"></view>
-                    <view class="order_name">待收货</view>
+                <navigator url="/pages/consumptionlist/consumptionlist">
+                    <view class="iconfont icon-xiaofei01"></view>
+                    <view class="order_name">消费明细</view>
                 </navigator>
 
                 <navigator url="/pages/order/index?type=4">
-                    <view class="iconfont icon-tuihuotuikuan_dianpu"></view>
-                    <view class="order_name">退款/退货</view>
+                    <view class="iconfont icon-chongzhi"></view>
+                    <view class="order_name">充值缴费</view>
                 </navigator>
             </view>
         </view>
@@ -70,7 +70,7 @@
                 <text >联系客服</text>
                 <text >QQ:983793727</text>
             </view>
-            <navigator url="/pages/feedback/index" class="info_item">问题反馈</navigator>
+            <navigator url="/pages/feedback/feedback" class="info_item">问题反馈</navigator>
             <view class="info_item">关于我们</view>
         </view>
         <view class="logout_wrap" bindtap="logout" >

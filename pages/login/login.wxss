@@ -5,7 +5,12 @@ button{
     background-color: #126ba8;
     color: floralwhite;
 }
-
+page{
+  background-color:#edf5fa;
+}
+.blank{
+  height: 70rpx;
+}
 .view-contain-ti {
     display: flex;
     height: 40px;

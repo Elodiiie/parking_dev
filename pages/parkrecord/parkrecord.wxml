@@ -1,0 +1,33 @@
+<!--pages/parkrecord/parkrecord.wxml-->
+<view class="icontime">
+    <view class="iconfont icon-time"></view>
+  </view>
+<picker mode="date" header-text="选择时间" fields="month" value="{{date}}" bindchange="bindDateChange">
+  <view class="font30">
+    <text class="color3">时间：</text>
+    <text class="color6">{{date}}</text>
+    <text class="timeIcon">▼</text>
+  </view>
+</picker>
+
+
+<view class="table">
+  <view class="tr bg-w">
+    <view class="th">进场时间</view>
+    <view class="th">出场时间</view>
+    <view class="th ">费用</view>
+  </view>
+  <block wx:for="{{listData}}" wx:key="{{item.parkrecordid}}">
+    <view class="tr bg-g"  wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.entrancetime}}</view>
+      <view class="td">{{item.exittime}}</view>
+      <view class="td">{{item.fare}}</view>
+
+    </view>
+    <view class="tr"  wx:else >
+      <view class="td">{{item.entrancetime}}</view>
+      <view class="td">{{item.exittime}}</view>
+      <view class="td">{{item.fare}}</view>
+    </view>
+  </block>
+</view>

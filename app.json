@@ -4,14 +4,18 @@
     "pages/login/login",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/car/car"
+    "pages/car/car",
+    "pages/feedback/feedback",
+    "pages/parkrecord/parkrecord",
+    "pages/consumptionlist/consumptionlist",
+    "pages/pay/pay"
 
 
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#126ba8",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle":"white"
   },
   "style": "v2",

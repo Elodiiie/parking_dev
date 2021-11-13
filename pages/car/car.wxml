@@ -1,2 +1,41 @@
 <!--pages/car/car.wxml-->
-<text>pages/car/car.wxml</text>
+<view class="head">
+    <view class="blank">
+        <!-- <view class="arrow" bindtap="goback"></view> -->
+        <view class="date">{{date}}</view>
+        <view class="week">{{week}}</view>
+    </view>
+    <view class="showname">{{userinfo.nickName}},您好</view>
+    <view class="showCarNum">车辆：{{carNum}} 辆</view>
+    <view class="deleteTip">长按删除</view>
+</view>
+<view class="white"></view>
+<view class="table">
+  <view class="tr bg-w">
+    <view class="th">车牌</view>
+    <view class="th">是否在停车场内</view>
+    <view class="th ">进入/最后离开</view>
+    <view class="th_arrow">记录</view>
+  </view>
+  <block wx:for="{{listData}}" wx:key="{{item.carid}}">
+    <view class="tr bg-g" bindlongpress='deletecar' data-id="{{item.carid}}" data-carlicense="{{item.carlicense}}" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.carlicense}}</view>
+      <view class="td">{{item.exist==0?"否":"是"}}</view>
+      <view class="td">{{item.time}}</view>
+      <view class="td_arrow">
+        <view class="arrow" bindtap="parkrecord" data-carid="{{item.carid}}"></view>
+      </view>
+    </view>
+    <view class="tr" bindlongpress='deletecar'  data-id="{{item.carid}}" data-carlicense="{{item.carlicense}}" wx:else >
+      <view class="td">{{item.carlicense}}</view>
+      <view class="td">{{item.exist==0?"否":"是"}}</view>
+      <view class="td">{{item.time}}</view>
+      <view class="td_arrow">
+        <view class="arrow" bindtap="parkrecord" data-carid="{{item.carid}}"></view>
+      </view>
+    </view>
+  </block>
+  <view class="addCar">
+    <view class="iconfont icon-add-fill" bindtap='addCar'></view>
+  </view>
+</view>
