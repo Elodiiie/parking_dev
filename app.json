@@ -5,12 +5,13 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/car/car",
+    "pages/addcar/addcar",
     "pages/feedback/feedback",
     "pages/parkrecord/parkrecord",
     "pages/consumptionlist/consumptionlist",
-    "pages/pay/pay"
-
-
+    "pages/pay/pay",
+    "pages/payrecord/payrecord",
+    "pages/updatepassword/updatepassword"
   ],
   "window":{
     "backgroundTextStyle":"light",

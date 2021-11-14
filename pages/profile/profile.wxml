@@ -24,14 +24,6 @@
                 <view class="his_num">{{carNum}}</view>
                 <view class="his_name">车辆数</view>
             </navigator>
-            <!-- <navigator url="/pages/collect/index">
-                <view class="his_num">{{collectNums}}</view>
-                <view class="his_name">收藏的商品</view>
-            </navigator>
-            <navigator >
-                <view class="his_num">0</view>
-                <view class="his_name">关注的商品</view>
-            </navigator> -->
             <navigator >
                 <view class="his_num">{{score}}</view>
                 <view class="his_name">积分</view>
@@ -43,26 +35,29 @@
 
                 <navigator url="/pages/order/index?type=1">
                     <view class="iconfont icon-gerenxinxi"></view>
-                    <view class="order_name">修改信息</view>
+                    <view class="order_name">完善信息</view>
                 </navigator>
-
-                <navigator url="/pages/order/index?type=2">
+                <navigator url="/pages/updatepassword/updatepassword">
+                    <view class="iconfont icon-password"></view>
+                    <view class="order_name">修改密码</view>
+                </navigator>
+                <!-- <navigator url="/pages/order/index?type=2">
                     <view class="iconfont icon-tingchechang"></view>
                     <view class="order_name">场内车辆</view>
-                </navigator>
+                </navigator> -->
 
                 <navigator url="/pages/consumptionlist/consumptionlist">
                     <view class="iconfont icon-xiaofei01"></view>
                     <view class="order_name">消费明细</view>
                 </navigator>
 
-                <navigator url="/pages/order/index?type=4">
+                <navigator url="/pages/pay/pay">
                     <view class="iconfont icon-chongzhi"></view>
                     <view class="order_name">充值缴费</view>
                 </navigator>
             </view>
         </view>
-        <view class="address_wrap">
+        <view class="address_wrap" bindtap="tip">
             积分消费
         </view>
         <view class="app_info_wrap">

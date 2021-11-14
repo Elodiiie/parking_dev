@@ -2,7 +2,6 @@ import { request } from "../../request/index";
 // pages/login/login.js
 Page({
     handleGetUserInfo(e){
-        console.log(e)
         const {userInfo} = e.detail;
         wx.setStorageSync('userInfo', userInfo)
         wx.navigateBack({
@@ -12,7 +11,6 @@ Page({
         })
     },
     getUserProfile(e) {
-      console.log("getUserProfile方法")
         // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
         // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
         wx.getUserProfile({
@@ -36,14 +34,9 @@ Page({
     },
     async login(e){
       try{
-        console.log("login方法")
-        console.log(this.data.username)
         const loginparams={username:this.data.username,password:this.data.password}
-        console.log(loginparams)
         const res=await request({url:"/user/login",data:loginparams,method:"post"});
-        console.log(res);
         if(res.code==20000){
-          console.log("成功")
           wx.setStorageSync('token', res.data.token)
           this.getUserProfile(e)
           this.getUserInfo2(res.data.token.toString())
@@ -56,10 +49,6 @@ Page({
             title: '账号或密码错误',
             icon: 'error',
             duration: 1500,
-            success: function () {
-             //弹窗后执行，可以省略
-             
-            }
             })
         }
       }catch(error){
@@ -68,7 +57,6 @@ Page({
     },
     async getUserInfo2(token){
       const res=await request({url:"/user/info2",data:token,method:"post"});
-      console.log(res);
       if(res.code==20000){
         wx.setStorageSync('info2', res.data)
       }

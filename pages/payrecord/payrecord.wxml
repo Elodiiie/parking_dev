@@ -1,0 +1,27 @@
+<!--pages/payrecord/payrecord.wxml-->
+<view class="head">
+    <view class="blank">
+        <!-- <view class="arrow" bindtap="goback"></view> -->
+        <view class="date">{{date}}</view>
+        <view class="week">{{week}}</view>
+    </view>
+    <view class="showname">{{userinfo.nickName}},您好</view>
+</view>
+<view class="white"></view>
+<view class="table">
+  <view class="tr bg-w">
+    <view class="th">时间</view>
+    <view class="th">费用</view>
+  </view>
+  <block wx:for="{{listData}}" wx:key="{{item.parid}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.time}}</view>
+      <view class="td">{{item.fare}}</view>
+
+    </view>
+    <view class="tr" wx:else >
+      <view class="td">{{item.time}}</view>
+      <view class="td">{{item.fare}}</view>
+    </view>
+  </block>
+</view>

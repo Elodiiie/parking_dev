@@ -23,7 +23,7 @@
             </view>
         </view>
         <view class="form_btn_wrap">
-            <button bind:tap="handleFormSubmit"  type="primary" >
+            <button bind:tap="handleFormSubmit" style="background: #126ba8;" type="primary" >
                 <icon type="success_no_circle" size="20" color="white"/>
                 提交
             </button>

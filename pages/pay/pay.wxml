@@ -1,2 +1,80 @@
 <!--pages/pay/pay.wxml-->
-<text>pages/pay/pay.wxml</text>
+<view class="record" bindtap="payrecord">
+    <view class="payrecord">
+        <view class="iconfont icon-chongzhi"></view>
+        充值记录
+    </view>
+</view>
+
+<view class="show_balance">
+  账号余额：{{balance}}
+  <view class="refresh" bindtap="refresh">
+    <view class="iconfont icon-refresh"></view>
+  </view>
+</view>
+<view class="white"></view>
+<view class="choose">
+    请选择一种充值方式
+    <view class="choosepay">
+      <view class="weixin" bindtap="chose" data-num="1">
+        <view class="iconfont icon-weixin"></view>
+        <view class="chose">
+          <view wx:if="{{chose_num ==1}}">
+            <view class="iconfont icon-ok"></view>
+          </view>
+          <view wx:else>  </view>
+        </view>
+      </view>
+      <view class="alipay" bindtap="chose" data-num="2">
+        <view class="iconfont icon-alipay"></view>
+        <view class="chose">
+          <view wx:if="{{chose_num ==2}}">
+            <view class="iconfont icon-ok"></view>
+          </view>
+          <view wx:else>  </view>
+        </view>
+      </view>
+      <view class="more">
+        <view class="iconfont icon-more"></view>
+      </view>
+    </view>
+</view>
+<view class="white"></view>
+<view class="numOfPay">
+    请选择充值金额
+    
+<view class="table">
+  <view class="tr bg-g">
+    <view class="td" bindtap="chose_money" data-money="10">￥10.00元人名币</view>
+    <view class="td-h"></view>
+    <view class="td" bindtap="chose_money" data-money="30">￥30.00元人名币</view>
+  </view>
+  <view class="tr bg-g">
+    <view class="td" bindtap="chose_money" data-money="50">￥50.00元人名币</view>
+    <view class="td-h"></view>
+    <view class="td" bindtap="chose_money" data-money="100">￥100.00元人名币</view>
+  </view>
+  <view class="tr bg-g">
+    <view class="td" bindtap="chose_money" data-money="200">￥200.00元人名币</view>
+    <view class="td-h"></view>
+    <view class="td" bindtap="chose_money_custom" data-statu="open">自定义金额</view>
+  </view>
+</view>
+</view>
+<view class="white_tip"></view>
+<view class="tip">说明：充值成功后不支持退款，请您审慎选择充值金额</view>
+<!--mask-->  
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>  
+<!--content-->  
+<!--使用animation属性指定需要执行的动画-->  
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">  
+  <!--drawer content-->  
+  <view class="drawer_title">自定义金额</view>  
+  <view class="drawer_content">  
+    <view class="top bottom grid">  
+      <input class="input_base input_h30 col-1" name="bz" type="number" bindblur="update_custom"></input>  
+      <label class="title col-0" >元人名币</label>  
+    </view>  
+  </view>  
+  <view class="btn_ok" bindtap="powerDrawer" data-statu="submit">去支付</view>  
+</view>

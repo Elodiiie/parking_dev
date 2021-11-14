@@ -11,7 +11,6 @@ Page({
         listData:[]
     },
     bindDateChange: function(e) {
-        console.log('picker发送选择改变，携带值为', e.detail.value)
         this.setData({
           date: e.detail.value
         })
@@ -19,7 +18,6 @@ Page({
 
     },
     async getParkRecordDetail(carid){
-        console.log(carid)
         const res=await request({url:"/parkrecord/findDetailByCarid/"+carid,data:carid,method:"get"});
         this.setData({
             listData:res
@@ -34,12 +32,10 @@ Page({
         }
     },
     async getParkRecordDetailByMonth(carid,date){
-      console.log(carid)
       const res=await request({url:"/parkrecord/findDetailByCaridAndMonth/"+carid+"/"+date,data:carid,date,method:"get"});
       this.setData({
           listData:res
       })
-      console.log(res)
       if(res.length==0){
    
         wx.showToast({
@@ -54,7 +50,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options)
         this.getParkRecordDetail(options.carid)
         this.setData({
           carid:options.carid

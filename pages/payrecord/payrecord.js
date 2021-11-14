@@ -1,11 +1,10 @@
-// pages/car/car.js
+// pages/payrecord/payrecord.js
 import { request } from "../../request/index";
 Page({
     /**
      * 页面的初始数据
      */
     data: {
-        carNum:0,
         week:'',
         date:'',
         listData:[],
@@ -16,19 +15,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      const token=wx.getStorageSync("info2");
-      if(!token){
-        wx.navigateTo({
-          url: '/pages/auth/index',
-        });
-        return;
-      }
+        const info = wx.getStorageSync('info2')
         let that = this
         that.setData({
-            carNum:options.carNum,
-            userid:options.userid
+            userid:info.userid
         })
-        if(this.data.carNum==0){
+        if(this.data.carNum==0){//修改
             wx.showModal({
                 title: '未查询到您的车辆',
                 content: '要添加车辆吗？',
@@ -43,51 +35,14 @@ Page({
                 }
               })
         }else{
-            this.getCarDetail(this.data.userid)
+            this.getPayDetail(this.data.userid)
         }
     },
-    async getCarDetail(userid){
-        const res=await request({url:"/parking/getCarDetialBywx_overall/"+userid,data:userid,method:"get"});
+    async getPayDetail(userid){
+        const res=await request({url:"/pay/getPayDetialBywx_overall/"+userid,data:userid,method:"get"});
         this.setData({
             listData:res
         })
-    },
-    deletecar:function(e){
-        const carid = e.currentTarget.dataset.id;
-        const carlicense = e.currentTarget.dataset.carlicense;
-        wx.showModal({
-            title: '提示--'+carlicense,
-            content: '要删除该车辆吗？',
-            success (res) {
-              if (res.confirm) {
-                request({url:"/car/deletecarById/"+carid,data:carid,method:"delete"});
-                wx.showToast({
-                    title: '删除成功',
-                    icon:'success',
-                    mask:true,
-                    duration: 1000,
-                });
-                wx.navigateTo({
-                  url: '/pages/car/car',
-                })
-              }else if (res.cancel){
-                wx.navigateBack({
-                  delta: 1,
-                })
-              }
-            }
-          })
-    },
-    addCar(){
-      wx.navigateTo({
-        url: '/pages/addcar/addcar',
-      })
-    },
-    parkrecord:function(e){
-      const carid = e.currentTarget.dataset.carid;
-      wx.navigateTo({
-        url: '/pages/parkrecord/parkrecord?carid='+carid,
-      })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -101,13 +56,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-      const token=wx.getStorageSync("info2");
-      if(!token){
-        wx.navigateTo({
-          url: '/pages/auth/index',
-        });
-        return;
-      }
         const userinfo=wx.getStorageSync('userInfo')
         const info=wx.getStorageSync('info2')
         this.setData({

@@ -11,7 +11,6 @@ Page({
         listData:[]
     },
     bindDateChange: function(e) {
-        console.log('picker发送选择改变，携带值为', e.detail.value)
         this.setData({
           date: e.detail.value
         })
@@ -33,12 +32,10 @@ Page({
         }
     },
     async getParkRecordDetailByMonth(userid,date){
-      console.log(userid)
       const res=await request({url:"/parkrecord/findDetailByUseridAndMonth/"+userid+"/"+date,data:userid,date,method:"get"});
       this.setData({
           listData:res
       })
-      console.log(res)
       if(res.length==0){   
         wx.showToast({
           title: '该月暂无消费数据',
@@ -55,7 +52,6 @@ Page({
         this.setData({
             userid :wx.getStorageSync('info2').userid
         })
-        console.log(this.data.userid);
         this.getParkRecordDetail(this.data.userid)
     },
 
@@ -70,7 +66,13 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+      const token=wx.getStorageSync("info2");
+      if(!token){
+        wx.navigateTo({
+          url: '/pages/auth/index',
+        });
+        return;
+      }
     },
 
     /**

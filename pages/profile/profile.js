@@ -18,7 +18,6 @@ Page({
             userinfo,
             info
         })
-        console.log(this.data.info)
         if(info){
             this.getCar(info.userid)
             this.getScore(info.userid)
@@ -26,21 +25,25 @@ Page({
     },
     // 获取该用户的数据
     async getCar(userid){
-        console.log(userid)
         const res=await request({url:"/car/getNumByUserid/"+userid,data:userid,method:"get"});
         this.setData({
             carNum:res
         })
     },
     async getScore(userid){
-        console.log(userid)
         const res=await request({url:"/parkrecord/getNumByUserid/"+userid,data:userid,method:"get"});
         this.setData({
             score:res
         })
     },
+    tip(){
+        wx.showToast({
+          title: '积分兑换尚未实现,敬请期待',
+          icon:'none',
+          duration:1500
+        })
+    },
     async logout(e){
-        console.log("aa");
         wx.showModal({
             title: '提示',
             content: '确定要退出吗？',

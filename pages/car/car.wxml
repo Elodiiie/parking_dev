@@ -1,7 +1,6 @@
 <!--pages/car/car.wxml-->
 <view class="head">
     <view class="blank">
-        <!-- <view class="arrow" bindtap="goback"></view> -->
         <view class="date">{{date}}</view>
         <view class="week">{{week}}</view>
     </view>
