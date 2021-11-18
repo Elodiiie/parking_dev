@@ -109,7 +109,7 @@ page {
     text-align: center;
     line-height: 2rem;
     border: 3rpx solid #adadab;
-    border-radius: 10%;
+    border-radius: 1em;
     /* border-inline: 3rpx solid #edf5fa; */
 }
 .td-h{

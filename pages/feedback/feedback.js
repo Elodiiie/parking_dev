@@ -134,7 +134,7 @@ Page({
               wx.navigateBack({
                 delta:1
               })
-            }, 2000);
+            }, 1500);
           }
       });
 

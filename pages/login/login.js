@@ -25,10 +25,16 @@ Page({
             const {userInfo} = res;
             wx.setStorageSync('userInfo', userInfo)
             wx.navigateTo({
-              url: '/pages/login/login',
+              url: '/pages/profile/profile',
             })
           }
         })
+    },
+    resetBtnClick(){
+      this.setData({
+        username:'',
+        password:''
+      })
     },
     async login(e){
       try{
