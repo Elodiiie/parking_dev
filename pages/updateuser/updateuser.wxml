@@ -1,0 +1,30 @@
+<!--pages/updateuser/updateuser.wxml-->
+<view class="blank"></view>
+<view class="view-contain-ti" >
+    <text class="text-ti">账号名</text>
+    <input class="input1" value="{{username}}" bindinput="usernameInput"></input>
+</view>
+<view class ="view-contain-sex">
+    <label class="text-ti">性别</label>
+    <radio-group bindchange="bandleSexChange" class="radio_sex">
+        <radio value="0" color="#126ba8" checked="{{check1}}"/>男
+        <radio value="2" color="#126ba8" checked="{{check2}}"/>女
+    </radio-group>
+</view>
+<view class="view-contain-ti" >
+    <text class="text-ti">手机号</text>
+    <input class="input1" value="{{phone}}" bindinput="phoneInput"></input>
+</view>
+<view class="view-contain-ti" >
+    <text class="text-ti">邮箱</text>
+    <input class="input1" value="{{email}}" bindinput="emailInput"></input>
+</view>
+<view class="view-contain-ti" >
+    <text class="text-ti">个人信息</text>
+    <input class="input1" value="{{introduction}}" bindinput="introductionInput"></input>
+</view>
+<view class="blank"></view>
+<view class="viewName" style="width: 70%;margin-left: 15%;">
+  <button class="loginBtn"  bindtap="update" >修改</button>
+  <button class="resetBtn" bindtap="resetBtnClick">清空</button>
+</view>
