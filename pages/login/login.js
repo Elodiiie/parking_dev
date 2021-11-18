@@ -24,10 +24,8 @@ Page({
           complete:(res)=>{
             const {userInfo} = res;
             wx.setStorageSync('userInfo', userInfo)
-            wx.navigateBack({
-              delta: ({
-                  delta:1
-              }),
+            wx.navigateTo({
+              url: '/pages/login/login',
             })
           }
         })

@@ -1,6 +1,6 @@
 // pages/feedback/feedback.js
+import { request } from "../../request/index";
 Page({
-
     data: {
       tabs:[
         {
@@ -15,9 +15,20 @@ Page({
         },
       ],
       chooseImages:[],
-      textVal:""
+      textVal:"",
+      maxLen: 200,//备注最多字数   		   
+      nowLen: 0
     },
     UploadImgs:[],
+    onLoad(){
+      const token=wx.getStorageSync("info2");
+      if(!token){
+        wx.navigateTo({
+          url: '/pages/auth/index',
+        });
+        return;
+      }
+    },
     handletabsitemchange(e){
       const {index}=e.detail;
       let {tabs}=this.data;
@@ -30,6 +41,9 @@ Page({
   
     handleChoose(){
       wx.chooseImage({
+        count:9,
+        sourceType:['album','camera'],
+        sizeType:['origin','compressed'],
         success: (res) => {
           
           this.setData({
@@ -52,12 +66,18 @@ Page({
     },
   
     handleTextInpute(e){
-      this.setData({
-        textVal:e.detail.value,
-      })
+      var value = e.detail.value;
+      var len = parseInt(value.length);
+      if (len <= this.data.maxLen) {
+        this.setData({     
+          textVal:e.detail.value,
+          nowLen: len,
+        })
+      }
+      else return;
     },
   
-    handleFormSubmit(){
+    async handleFormSubmit(){
       const {textVal,chooseImages}=this.data;
       if (!textVal.trim()) {
         wx.showToast({
@@ -74,39 +94,50 @@ Page({
       })
       if (chooseImages!=0) {
         chooseImages.forEach((v,i)=>{
-        console.log(v);
-        
-        wx.uploadFile({
-          filePath: 'v',
-          name: 'image',
-          url: 'https://img.coolcr.cn/api/upload',
-          formData:{}, 
-          success:(res)=>{
-            console.log(res);
-            let url=JSON.parse (res.data).url;
-            this.UploadImgs.push(url);
-  
-            if (i===chooseImages.length-1) {
-              wx.hideLoading( );
-              console.log("111");
-              this.setData({
-                textVal:"",
-                chooseImages:[]
-              })
-              wx.navigateBack({
-                delta:1
-              })
+          console.log(v);
+          
+          wx.uploadFile({
+            filePath: 'v',
+            name: 'image',
+            url: 'https://images.ac.cn/Home/Index/UploadAction',
+            formData:{}, 
+            success:(res)=>{
+              console.log(res);
+              let url=JSON.parse (res.data).url;
+              this.UploadImgs.push(url);
+    
+              if (i===chooseImages.length-1) {
+                wx.hideLoading( );
+                console.log("111");
+                this.setData({
+                  textVal:"",
+                  chooseImages:[]
+                })
+                wx.navigateBack({
+                  delta:1
+                })
+              }
             }
-          }
-        })
+          })
       });
       } else {
         wx.hideLoading();
-        console.log("只是提交了文本");
-        wx.navigateBack({
-          delta:1
-        })
+        const userid=wx.getStorageSync('info2').userid
+        const addFeedbackParams={userid:userid,content:this.data.textVal,imageUrl:null}
+        const res=await request({url:"/feedback/saveAll",data:addFeedbackParams,method:"post"});
+        wx.showToast({
+          title: '反馈成功',
+          icon: 'success',
+          duration: 1500,
+          success: function () {
+            setTimeout(function() {
+              wx.navigateBack({
+                delta:1
+              })
+            }, 2000);
+          }
+      });
+
       }
-      
     },
   })
