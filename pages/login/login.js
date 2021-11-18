@@ -24,8 +24,11 @@ Page({
           complete:(res)=>{
             const {userInfo} = res;
             wx.setStorageSync('userInfo', userInfo)
-            wx.navigateTo({
-              url: '/pages/profile/profile',
+            // wx.navigateTo({
+            //   url: '/pages/profile/profile',
+            // })
+            wx.navigateBack({
+              delta: 3,
             })
           }
         })
@@ -45,10 +48,6 @@ Page({
           this.getUserProfile(e)
           this.getUserInfo2(res.data.token.toString())
         }else{
-          this.setData({
-            username:'',
-            password:''
-          })
           wx.showToast({
             title: '账号或密码错误',
             icon: 'error',

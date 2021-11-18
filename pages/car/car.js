@@ -36,9 +36,9 @@ Page({
                   if (res.confirm) {
                     //跳转到添加车辆页面
                   }else if (res.cancel){
-                    wx.navigateTo({
-                        url: '/pages/profile/profile',
-                      })
+                    wx.navigateBack({
+                      delta:1
+                    })
                   }
                 }
               })
@@ -67,8 +67,8 @@ Page({
                     mask:true,
                     duration: 1000,
                 });
-                wx.navigateTo({
-                  url: '/pages/car/car',
+                wx.navigateBack({
+                  delta:1
                 })
               }else if (res.cancel){
                 wx.navigateBack({
@@ -85,6 +85,7 @@ Page({
     },
     parkrecord:function(e){
       const carid = e.currentTarget.dataset.carid;
+      console.log(carid)
       wx.navigateTo({
         url: '/pages/parkrecord/parkrecord?carid='+carid,
       })

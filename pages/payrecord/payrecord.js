@@ -28,9 +28,9 @@ Page({
                   if (res.confirm) {
                     //跳转到添加车辆页面
                   }else if (res.cancel){
-                    wx.navigateTo({
-                        url: '/pages/profile/profile',
-                      })
+                    wx.navigateBack({
+                        delta:1
+                    })
                   }
                 }
               })

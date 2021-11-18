@@ -20,10 +20,9 @@ Page({
         }else{
             const loginparams={username:this.data.username,password:this.data.password}
             const res=await request({url:"/user/verifyPassword",data:loginparams,method:"post"});
-            if(res.code==20000){
+            if(res){
                 const str1 = this.data.password
                 const str2 = this.data.newpassword
-       
               if(str1==str2){
                 wx.showToast({
                   title: '新密码不可与原密码相同',

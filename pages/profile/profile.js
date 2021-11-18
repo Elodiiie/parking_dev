@@ -44,6 +44,7 @@ Page({
         })
     },
     async logout(e){
+        var that = this;
         wx.showModal({
             title: '提示',
             content: '确定要退出吗？',
@@ -58,9 +59,10 @@ Page({
                     })
                   },
                   complete:(res)=>{
-                      wx.navigateTo({
-                        url: '/pages/profile/profile',
-                      })
+                    // wx.navigateTo({
+                    //   url: '/pages/profile/profile',
+                    // })
+                    that.onShow()
                   }
                 })
               }
@@ -78,5 +80,17 @@ Page({
         return{
             title:"WS停车系统"
         }
-    }
+    },
+    onPullDownRefresh: function () {
+        wx.showNavigationBarLoading() //在标题栏中显示加载
+        //模拟加载
+        const info=wx.getStorageSync('info2')
+        this.getCar(info.userid)
+        this.getScore(info.userid)
+        setTimeout(function () {
+          // complete
+          wx.hideNavigationBarLoading() //完成停止加载
+          wx.stopPullDownRefresh() //停止下拉刷新
+        }, 1500);
+      }
 })

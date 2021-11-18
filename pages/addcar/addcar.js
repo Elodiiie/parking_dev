@@ -67,8 +67,8 @@ Page({
         var carlicense = this.data.carnum.join("");
         const addCarParams={userid:this.data.userid,carlicense:carlicense}
         const result=request({url:"/car/saveAll",data:addCarParams,method:"post"});
-        wx.navigateTo({
-          url: '/pages/profile/profile',
+        wx.navigateBack({
+          delta:2
         })
       }else{
         wx.showToast({

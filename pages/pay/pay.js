@@ -78,30 +78,36 @@ Page({
                 //调用真实扣费系统api
                 const newBalance = parseInt(that.data.chose_money)+parseInt(that.data.balance)
                 const updateParams={userid:that.data.userid,balance:newBalance}
-                const username= wx.getStorageSync('info2').name
                 that.getDate()
-                const addPayParams={username:username,time:that.data.currentDay,fare:that.data.chose_money}
-                const result0 = request({url:"/pay/addRecord",data:addPayParams,method:"post"});
-                const result=request({url:"/user/updateBalance",data:updateParams,method:"post"});
-                wx.showToast({
-                  title: '支付成功',
-                  icon:'success',
-                  mask:true,
-                  duration: 1500,
-                })
-                // wx.navigateBack({
-                //   delta: 1,
-                // })
-                that.setData({
-                    balance:newBalance
-                })
+                const addPayParams={userid:that.data.userid,time:that.data.currentDay,fare:that.data.chose_money}
+                that.addRecord(addPayParams,updateParams)
               }else if (res.cancel){
-                wx.navigateTo({
-                    url: '/pages/pay/pay',
-                  })
               }
             }
         })
+    },
+    async addRecord(addPayParams,updateParams){
+      const result0 = await request({url:"/pay/addRecord",data:addPayParams,method:"post"});
+      console.log(result0)
+      if(result0.code ==20000){
+        const result=await request({url:"/user/updateBalance",data:updateParams,method:"post"});
+        wx.showToast({
+          title: '支付成功',
+          icon:'success',
+          mask:true,
+          duration: 1500,
+        })
+        that.setData({
+            balance:newBalance
+        })
+      }else{
+        wx.showToast({
+          title: '支付失败'+result0.message,
+          icon:'none',
+          mask:true,
+          duration: 1500,
+        })
+      }
     },
     getDate() {  
       var date = new Date();

@@ -11,7 +11,8 @@
     "pages/consumptionlist/consumptionlist",
     "pages/pay/pay",
     "pages/payrecord/payrecord",
-    "pages/updatepassword/updatepassword"
+    "pages/updatepassword/updatepassword",
+    "pages/updateuser/updateuser"
   ],
   "window":{
     "backgroundTextStyle":"light",
